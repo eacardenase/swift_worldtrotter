@@ -87,19 +87,23 @@ class ViewController: UIViewController {
             celsiusText.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor)
         ])
     }
-    
-    override func loadView() {
-        view = UIView()
-        
-        view.backgroundColor = UIColor(red: 245 / 255.0, green: 244 / 255.0, blue: 241 / 255.0, alpha: 1)
-        
-        setupUI()
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [
+            UIColor.yellow.cgColor,
+            UIColor.red.cgColor,
+            UIColor.blue.cgColor,
+            UIColor.cyan.cgColor,
+            UIColor.green.cgColor,
+        ].reversed()
+                
+        view.layer.addSublayer(gradientLayer)
+        
+        setupUI()
     }
-
-
 }
 
