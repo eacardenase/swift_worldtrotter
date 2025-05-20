@@ -71,19 +71,19 @@ class ViewController: UIViewController {
         view.addSubview(celsiusText)
         
         NSLayoutConstraint.activate([
-            fahrenheitNumber.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            fahrenheitNumber.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             fahrenheitNumber.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            fahrenheitText.topAnchor.constraint(equalTo: fahrenheitNumber.bottomAnchor, constant: 10),
+            fahrenheitText.topAnchor.constraint(equalTo: fahrenheitNumber.bottomAnchor, constant: 8),
             fahrenheitText.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor),
             
-            connectorLabel.topAnchor.constraint(equalTo: fahrenheitText.bottomAnchor, constant: 10),
+            connectorLabel.topAnchor.constraint(equalTo: fahrenheitText.bottomAnchor, constant: 8),
             connectorLabel.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor),
             
-            celsiusNumber.topAnchor.constraint(equalTo: connectorLabel.bottomAnchor, constant: 10),
+            celsiusNumber.topAnchor.constraint(equalTo: connectorLabel.bottomAnchor, constant: 8),
             celsiusNumber.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor),
             
-            celsiusText.topAnchor.constraint(equalTo: celsiusNumber.bottomAnchor, constant: 0),
+            celsiusText.topAnchor.constraint(equalTo: celsiusNumber.bottomAnchor, constant: 8),
             celsiusText.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor)
         ])
     }
