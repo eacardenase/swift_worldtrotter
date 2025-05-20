@@ -13,6 +13,8 @@ class ViewController: UIViewController {
         let label = UILabel()
         
         label.text = "212"
+        label.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 70)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -22,6 +24,8 @@ class ViewController: UIViewController {
         let label = UILabel()
         
         label.text = "degrees Fahrenheit"
+        label.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 36)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -31,6 +35,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         
         label.text = "is really"
+        label.font = UIFont.systemFont(ofSize: 36)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -40,6 +45,8 @@ class ViewController: UIViewController {
         let label = UILabel()
         
         label.text = "100"
+        label.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 70)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -49,6 +56,8 @@ class ViewController: UIViewController {
         let label = UILabel()
         
         label.text = "degrees Celsius"
+        label.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 36)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -65,16 +74,16 @@ class ViewController: UIViewController {
             fahrenheitNumber.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             fahrenheitNumber.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            fahrenheitText.topAnchor.constraint(equalTo: fahrenheitNumber.bottomAnchor, constant: 40),
+            fahrenheitText.topAnchor.constraint(equalTo: fahrenheitNumber.bottomAnchor, constant: 10),
             fahrenheitText.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor),
             
-            connectorLabel.topAnchor.constraint(equalTo: fahrenheitText.bottomAnchor, constant: 40),
+            connectorLabel.topAnchor.constraint(equalTo: fahrenheitText.bottomAnchor, constant: 10),
             connectorLabel.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor),
             
-            celsiusNumber.topAnchor.constraint(equalTo: connectorLabel.bottomAnchor, constant: 40),
+            celsiusNumber.topAnchor.constraint(equalTo: connectorLabel.bottomAnchor, constant: 10),
             celsiusNumber.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor),
             
-            celsiusText.topAnchor.constraint(equalTo: celsiusNumber.bottomAnchor, constant: 40),
+            celsiusText.topAnchor.constraint(equalTo: celsiusNumber.bottomAnchor, constant: 0),
             celsiusText.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor)
         ])
     }
@@ -82,7 +91,7 @@ class ViewController: UIViewController {
     override func loadView() {
         view = UIView()
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 245 / 255.0, green: 244 / 255.0, blue: 241 / 255.0, alpha: 1)
         
         setupUI()
     }
