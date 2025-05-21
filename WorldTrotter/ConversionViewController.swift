@@ -9,15 +9,20 @@ import UIKit
 
 class ConversionViewController: UIViewController {
     
-    var fahrenheitNumber: UILabel = {
-        let label = UILabel()
+    var fahrenheitNumber: UITextField = {
+        let textField = UITextField()
         
-        label.text = "212"
-        label.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
-        label.font = UIFont.systemFont(ofSize: 70)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "value"
+        textField.textAlignment = .center
+        textField.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
+        textField.font = UIFont.systemFont(ofSize: 70)
+        textField.borderStyle = .none
+        textField.keyboardType = .decimalPad
+        textField.autocorrectionType = .no
+        textField.spellCheckingType = .no
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
-        return label
+        return textField
     }()
     
     var fahrenheitText: UILabel = {
