@@ -11,6 +11,15 @@ import MapKit
 class MapViewController: UIViewController {
     
     var mapView: MKMapView!
+    let segmentedControl: UISegmentedControl = {
+        let control = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
+        
+        control.backgroundColor = .systemBackground
+        control.selectedSegmentIndex = 0
+        control.translatesAutoresizingMaskIntoConstraints = false
+        
+        return control
+    }()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -27,6 +36,14 @@ class MapViewController: UIViewController {
         mapView = MKMapView()
         
         view = mapView
+        
+        view.addSubview(segmentedControl)
+        
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+        ])
     }
     
     override func viewDidLoad() {
