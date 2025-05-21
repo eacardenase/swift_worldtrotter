@@ -20,8 +20,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         
+        let conversionViewController = ViewController()
+        let mapViewController = MapViewController()
+        let tabBarController = UITabBarController()
+        
+        tabBarController.viewControllers = [conversionViewController, mapViewController]
+        tabBarController.tabBar.isTranslucent = false
+        
         window?.makeKeyAndVisible()
-        window?.rootViewController = MapViewController()
+        window?.rootViewController = tabBarController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
