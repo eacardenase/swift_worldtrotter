@@ -10,6 +10,8 @@ import MapKit
 
 class MapViewController: UIViewController {
     
+    var mapView: MKMapView!
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -22,7 +24,9 @@ class MapViewController: UIViewController {
     }
     
     override func loadView() {
-        view = MKMapView()
+        mapView = MKMapView()
+        
+        view = mapView
     }
     
     override func viewDidLoad() {
