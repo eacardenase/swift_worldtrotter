@@ -57,9 +57,9 @@ class MapViewController: UIViewController {
 extension MapViewController {
     @objc func mapTypeChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0: mapView.mapType = .standard
-        case 1: mapView.mapType = .hybrid
-        case 2: mapView.mapType = .satellite
+        case 0: mapView.preferredConfiguration = MKStandardMapConfiguration()
+        case 1: mapView.preferredConfiguration = MKHybridMapConfiguration()
+        case 2: mapView.preferredConfiguration = MKImageryMapConfiguration()
         default: break
         }
     }
