@@ -21,6 +21,7 @@ class ConversionViewController: UIViewController {
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.addTarget(self, action: #selector(fahrenheitFieldEditingChanged), for: .editingChanged)
         
         return textField
     }()
@@ -49,7 +50,7 @@ class ConversionViewController: UIViewController {
     var celsiusNumber: UILabel = {
         let label = UILabel()
         
-        label.text = "100"
+        label.text = "???"
         label.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 70)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -119,3 +120,14 @@ class ConversionViewController: UIViewController {
 
 }
 
+// MARK: - Actions
+
+extension ConversionViewController {
+    @objc func fahrenheitFieldEditingChanged(_ sender: UITextField) {
+        if let text = sender.text, !text.isEmpty {
+            celsiusNumber.text = sender.text
+        } else {
+            celsiusNumber.text = "???"
+        }
+    }
+}
