@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         
-        let conversionViewController = ViewController()
+        let conversionViewController = ConversionViewController()
         let mapViewController = MapViewController()
         let tabBarController = UITabBarController()
         

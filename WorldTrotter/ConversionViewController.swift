@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ConversionViewController: UIViewController {
     
     var fahrenheitNumber: UILabel = {
         let label = UILabel()
