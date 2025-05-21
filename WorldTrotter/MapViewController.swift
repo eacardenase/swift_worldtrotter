@@ -17,6 +17,7 @@ class MapViewController: UIViewController {
         control.backgroundColor = .systemBackground
         control.selectedSegmentIndex = 0
         control.translatesAutoresizingMaskIntoConstraints = false
+        control.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
         
         return control
     }()
@@ -48,5 +49,18 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+}
+
+// MARK: - Actions
+
+extension MapViewController {
+    @objc func mapTypeChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0: mapView.mapType = .standard
+        case 1: mapView.mapType = .hybrid
+        case 2: mapView.mapType = .satellite
+        default: break
+        }
     }
 }
