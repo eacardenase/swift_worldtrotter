@@ -147,6 +147,8 @@ class ConversionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fahrenheitTextField.delegate = self
     }
 
     func updateCelsiusLabel() {
@@ -171,5 +173,21 @@ extension ConversionViewController {
     
     @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         fahrenheitTextField.resignFirstResponder()
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension ConversionViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let existingTextHasDecimalSeparator = textField.text?.range(of: ".")
+        let replacementTextHasDecimalSeparator = string.range(of: ".")
+        
+        if existingTextHasDecimalSeparator != nil,
+           replacementTextHasDecimalSeparator != nil {
+            return false
+        } else {
+            return true
+        }
     }
 }
