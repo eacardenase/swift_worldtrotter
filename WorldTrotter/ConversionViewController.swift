@@ -92,6 +92,10 @@ class ConversionViewController: UIViewController {
             celsiusText.topAnchor.constraint(equalTo: celsiusNumber.bottomAnchor, constant: 8),
             celsiusText.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor)
         ])
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        
+        view.addGestureRecognizer(tapGesture)
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -129,5 +133,9 @@ extension ConversionViewController {
         } else {
             celsiusNumber.text = "???"
         }
+    }
+    
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        fahrenheitNumber.resignFirstResponder()
     }
 }
