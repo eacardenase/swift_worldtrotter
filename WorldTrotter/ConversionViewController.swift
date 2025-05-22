@@ -9,7 +9,20 @@ import UIKit
 
 class ConversionViewController: UIViewController {
     
-    var fahrenheitNumber: UITextField = {
+    var fahrenheitValue: Measurement<UnitTemperature>? {
+        didSet {
+            updateCelsiusLabel()
+        }
+    }
+    var celsiusValue: Measurement<UnitTemperature>? {
+        if let fahrenheitValue = fahrenheitValue {
+            return fahrenheitValue.converted(to: .celsius)
+        } else {
+            return nil
+        }
+    }
+    
+    var fahrenheitTextField: UITextField = {
         let textField = UITextField()
         
         textField.placeholder = "value"
@@ -47,7 +60,7 @@ class ConversionViewController: UIViewController {
         return label
     }()
     
-    var celsiusNumber: UILabel = {
+    var celsiusLabel: UILabel = {
         let label = UILabel()
         
         label.text = "???"
@@ -70,27 +83,27 @@ class ConversionViewController: UIViewController {
     }()
     
     private func setupUI() {
-        view.addSubview(fahrenheitNumber)
+        view.addSubview(fahrenheitTextField)
         view.addSubview(fahrenheitText)
         view.addSubview(connectorLabel)
-        view.addSubview(celsiusNumber)
+        view.addSubview(celsiusLabel)
         view.addSubview(celsiusText)
         
         NSLayoutConstraint.activate([
-            fahrenheitNumber.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            fahrenheitNumber.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            fahrenheitTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            fahrenheitTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            fahrenheitText.topAnchor.constraint(equalTo: fahrenheitNumber.bottomAnchor, constant: 8),
-            fahrenheitText.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor),
+            fahrenheitText.topAnchor.constraint(equalTo: fahrenheitTextField.bottomAnchor, constant: 8),
+            fahrenheitText.centerXAnchor.constraint(equalTo: fahrenheitTextField.centerXAnchor),
             
             connectorLabel.topAnchor.constraint(equalTo: fahrenheitText.bottomAnchor, constant: 8),
-            connectorLabel.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor),
+            connectorLabel.centerXAnchor.constraint(equalTo: fahrenheitTextField.centerXAnchor),
             
-            celsiusNumber.topAnchor.constraint(equalTo: connectorLabel.bottomAnchor, constant: 8),
-            celsiusNumber.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor),
+            celsiusLabel.topAnchor.constraint(equalTo: connectorLabel.bottomAnchor, constant: 8),
+            celsiusLabel.centerXAnchor.constraint(equalTo: fahrenheitTextField.centerXAnchor),
             
-            celsiusText.topAnchor.constraint(equalTo: celsiusNumber.bottomAnchor, constant: 8),
-            celsiusText.centerXAnchor.constraint(equalTo: fahrenheitNumber.centerXAnchor)
+            celsiusText.topAnchor.constraint(equalTo: celsiusLabel.bottomAnchor, constant: 8),
+            celsiusText.centerXAnchor.constraint(equalTo: fahrenheitTextField.centerXAnchor)
         ])
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -121,21 +134,27 @@ class ConversionViewController: UIViewController {
         super.viewDidLoad()
     }
 
-
+    func updateCelsiusLabel() {
+        if let celsiusValue = celsiusValue {
+            celsiusLabel.text = "\(celsiusValue.value)"
+        } else {
+            celsiusLabel.text = "???"
+        }
+    }
 }
 
 // MARK: - Actions
 
 extension ConversionViewController {
     @objc func fahrenheitFieldEditingChanged(_ sender: UITextField) {
-        if let text = sender.text, !text.isEmpty {
-            celsiusNumber.text = sender.text
+        if let text = sender.text, let value = Double(text) {
+            fahrenheitValue = Measurement(value: value, unit: .fahrenheit)
         } else {
-            celsiusNumber.text = "???"
+            fahrenheitValue = nil
         }
     }
     
     @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        fahrenheitNumber.resignFirstResponder()
+        fahrenheitTextField.resignFirstResponder()
     }
 }
