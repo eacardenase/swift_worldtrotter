@@ -24,7 +24,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let mapViewController = MapViewController()
         let tabBarController = UITabBarController()
         
-        tabBarController.viewControllers = [conversionViewController, mapViewController]
+        tabBarController.viewControllers = [
+            mapViewController,
+            conversionViewController,
+        ]
         tabBarController.tabBar.isTranslucent = false
         
         window?.makeKeyAndVisible()
