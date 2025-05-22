@@ -182,9 +182,11 @@ extension ConversionViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let existingTextHasDecimalSeparator = textField.text?.range(of: ".")
         let replacementTextHasDecimalSeparator = string.range(of: ".")
+        let replacingTextHasAlphabeticalCharacters = string.rangeOfCharacter(from: CharacterSet.letters)
         
-        if existingTextHasDecimalSeparator != nil,
-           replacementTextHasDecimalSeparator != nil {
+        if replacingTextHasAlphabeticalCharacters != nil ||
+            existingTextHasDecimalSeparator != nil &&
+            replacementTextHasDecimalSeparator != nil {
             return false
         } else {
             return true
