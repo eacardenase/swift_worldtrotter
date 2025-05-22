@@ -22,6 +22,16 @@ class ConversionViewController: UIViewController {
         }
     }
     
+    let numberFormatter: NumberFormatter = {
+        let nf = NumberFormatter()
+        
+        nf.numberStyle = .decimal
+        nf.minimumFractionDigits = 0
+        nf.maximumFractionDigits = 1
+        
+        return nf
+    }()
+    
     var fahrenheitTextField: UITextField = {
         let textField = UITextField()
         
@@ -65,6 +75,7 @@ class ConversionViewController: UIViewController {
         
         label.text = "???"
         label.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
+        label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 70)
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -92,6 +103,8 @@ class ConversionViewController: UIViewController {
         NSLayoutConstraint.activate([
             fahrenheitTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             fahrenheitTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            fahrenheitTextField.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            fahrenheitTextField.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             
             fahrenheitText.topAnchor.constraint(equalTo: fahrenheitTextField.bottomAnchor, constant: 8),
             fahrenheitText.centerXAnchor.constraint(equalTo: fahrenheitTextField.centerXAnchor),
@@ -101,6 +114,8 @@ class ConversionViewController: UIViewController {
             
             celsiusLabel.topAnchor.constraint(equalTo: connectorLabel.bottomAnchor, constant: 8),
             celsiusLabel.centerXAnchor.constraint(equalTo: fahrenheitTextField.centerXAnchor),
+            celsiusLabel.leadingAnchor.constraint(equalTo: fahrenheitTextField.leadingAnchor),
+            celsiusLabel.trailingAnchor.constraint(equalTo: fahrenheitTextField.trailingAnchor),
             
             celsiusText.topAnchor.constraint(equalTo: celsiusLabel.bottomAnchor, constant: 8),
             celsiusText.centerXAnchor.constraint(equalTo: fahrenheitTextField.centerXAnchor)
@@ -136,7 +151,7 @@ class ConversionViewController: UIViewController {
 
     func updateCelsiusLabel() {
         if let celsiusValue = celsiusValue {
-            celsiusLabel.text = "\(celsiusValue.value)"
+            celsiusLabel.text = numberFormatter.string(from: NSNumber(value: celsiusValue.value))
         } else {
             celsiusLabel.text = "???"
         }
