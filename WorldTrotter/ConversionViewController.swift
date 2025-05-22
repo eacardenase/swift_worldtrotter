@@ -55,6 +55,8 @@ class ConversionViewController: UIViewController {
         label.text = "degrees Fahrenheit"
         label.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 36)
+        label.numberOfLines = 0
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -65,6 +67,8 @@ class ConversionViewController: UIViewController {
         
         label.text = "is really"
         label.font = UIFont.systemFont(ofSize: 36)
+        label.numberOfLines = 0
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -77,6 +81,7 @@ class ConversionViewController: UIViewController {
         label.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 70)
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -88,6 +93,8 @@ class ConversionViewController: UIViewController {
         label.text = "degrees Celsius"
         label.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 36)
+        label.numberOfLines = 0
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -108,17 +115,19 @@ class ConversionViewController: UIViewController {
             
             fahrenheitText.topAnchor.constraint(equalTo: fahrenheitTextField.bottomAnchor, constant: 8),
             fahrenheitText.centerXAnchor.constraint(equalTo: fahrenheitTextField.centerXAnchor),
+            fahrenheitText.leadingAnchor.constraint(equalTo: fahrenheitTextField.leadingAnchor),
             
             connectorLabel.topAnchor.constraint(equalTo: fahrenheitText.bottomAnchor, constant: 8),
             connectorLabel.centerXAnchor.constraint(equalTo: fahrenheitTextField.centerXAnchor),
+            connectorLabel.leadingAnchor.constraint(equalTo: fahrenheitTextField.leadingAnchor),
             
             celsiusLabel.topAnchor.constraint(equalTo: connectorLabel.bottomAnchor, constant: 8),
             celsiusLabel.centerXAnchor.constraint(equalTo: fahrenheitTextField.centerXAnchor),
             celsiusLabel.leadingAnchor.constraint(equalTo: fahrenheitTextField.leadingAnchor),
-            celsiusLabel.trailingAnchor.constraint(equalTo: fahrenheitTextField.trailingAnchor),
             
             celsiusText.topAnchor.constraint(equalTo: celsiusLabel.bottomAnchor, constant: 8),
-            celsiusText.centerXAnchor.constraint(equalTo: fahrenheitTextField.centerXAnchor)
+            celsiusText.centerXAnchor.constraint(equalTo: fahrenheitTextField.centerXAnchor),
+            celsiusText.leadingAnchor.constraint(equalTo: fahrenheitTextField.leadingAnchor),
         ])
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
