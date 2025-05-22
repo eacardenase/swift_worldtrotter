@@ -25,8 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
         
         tabBarController.viewControllers = [
-            mapViewController,
             conversionViewController,
+            mapViewController,
         ]
         tabBarController.tabBar.isTranslucent = false
         

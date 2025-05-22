@@ -31,7 +31,7 @@ class MapViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        tabBarItem.title = "Map"
+        tabBarItem.title = NSLocalizedString("mapTitle", comment: "Map tabBarItem title")
         tabBarItem.image = UIImage(systemName: "map")
     }
     

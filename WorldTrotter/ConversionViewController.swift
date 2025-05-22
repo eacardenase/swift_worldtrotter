@@ -35,7 +35,7 @@ class ConversionViewController: UIViewController {
     var fahrenheitTextField: UITextField = {
         let textField = UITextField()
         
-        textField.placeholder = "value"
+        textField.placeholder = NSLocalizedString("fahrenheitValue", comment: "Fahrenheit value")
         textField.textAlignment = .center
         textField.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
         textField.font = UIFont.systemFont(ofSize: 70)
@@ -52,7 +52,7 @@ class ConversionViewController: UIViewController {
     var fahrenheitText: UILabel = {
         let label = UILabel()
         
-        label.text = "degrees Fahrenheit"
+        label.text = NSLocalizedString("fahrenheitLabel", comment: "Fahrenheit label")
         label.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 36)
         label.numberOfLines = 0
@@ -65,7 +65,7 @@ class ConversionViewController: UIViewController {
     var connectorLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "is really"
+        label.text = NSLocalizedString("connectorLabel", comment: "Connector label")
         label.font = UIFont.systemFont(ofSize: 36)
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -90,7 +90,7 @@ class ConversionViewController: UIViewController {
     var celsiusText: UILabel = {
         let label = UILabel()
         
-        label.text = "degrees Celsius"
+        label.text = NSLocalizedString("celsiusLabel", comment: "Celsius label")
         label.textColor = UIColor(red: 225 / 255.0, green: 88 / 255.0, blue: 41 / 255.0, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 36)
         label.numberOfLines = 0
@@ -138,7 +138,7 @@ class ConversionViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        tabBarItem.title = "Convert"
+        tabBarItem.title = NSLocalizedString("convertTitle", comment: "Convert tabBarItem title")
         tabBarItem.image = UIImage(systemName: "thermometer")
     }
     
