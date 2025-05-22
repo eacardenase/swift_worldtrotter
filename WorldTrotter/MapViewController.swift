@@ -72,7 +72,9 @@ extension MapViewController {
     }
 }
 
-extension MapViewController: MKMapViewDelegate, CLLocationManagerDelegate {
+// MARK: - MKMapViewDelegate
+
+extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         let region = MKCoordinateRegion(center: userLocation.coordinate,
                                         latitudinalMeters: 2000,
