@@ -11,6 +11,8 @@ import MapKit
 class MapViewController: UIViewController {
     
     var mapView: MKMapView!
+    var locationManager = CLLocationManager()
+    
     let segmentedControl: UISegmentedControl = {
         let control = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
         
@@ -49,6 +51,11 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.showsUserLocation = true
+        mapView.delegate = self
+        
+        locationManager.requestWhenInUseAuthorization()
     }
 }
 
@@ -62,5 +69,15 @@ extension MapViewController {
         case 2: mapView.preferredConfiguration = MKImageryMapConfiguration()
         default: break
         }
+    }
+}
+
+extension MapViewController: MKMapViewDelegate, CLLocationManagerDelegate {
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        let region = MKCoordinateRegion(center: userLocation.coordinate,
+                                        latitudinalMeters: 2000,
+                                        longitudinalMeters: 2000)
+        
+        mapView.setRegion(region, animated: true)
     }
 }
